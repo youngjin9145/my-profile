@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:shadow_portfolio/widgets/reveal_on_scroll.dart';
 import 'theme/app_theme.dart';
 import 'widgets/custom_cursor.dart';
 import 'sections/hero_section.dart';
+import 'sections/about_section.dart';
 
 void main() {
   runApp(const ShadowPortfolioApp());
@@ -31,10 +33,16 @@ class HomePage extends StatelessWidget {
         child: Align(
           alignment: Alignment.topCenter,
           child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 640),
+            constraints: const BoxConstraints(maxWidth: 800),
             child: const Padding(
               padding: EdgeInsets.symmetric(horizontal: 24, vertical: 80),
-              child: Column(children: [HeroSection()]),
+              child: Column(
+                children: [
+                  HeroSection(),
+                  SizedBox(height: 100),
+                  RevealOnScroll(child: AboutSection()),
+                ],
+              ),
             ),
           ),
         ),

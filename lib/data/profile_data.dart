@@ -9,4 +9,10 @@ class ProfileData {
     'Security Enthusiast',
     'Game Hacker (for fun)',
   ];
+
+  static const String about =
+      'App developer by trade, security tinkerer by obsession.\n\n'
+      'I craft cross-platform apps with Flutter & Dart, and spend my off-hours '
+      'reverse-engineering games and poking at systems to learn how they really work.\n\n'
+      'I like building things — and understanding them well enough to take them apart.';
 }
