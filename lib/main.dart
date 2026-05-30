@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'theme/app_theme.dart';
 import 'widgets/terminal_window.dart';
+import 'widgets/magnetic.dart';
 
 void main() {
   runApp(const ShadowPortfolioApp());
@@ -54,6 +55,20 @@ class BootScreen extends StatelessWidget {
                   ),
                   Text(
                     'Flutter App Developer · Security Enthusiast'
+                  ),
+                  SizedBox(height: 24,),
+                  Magnetic(
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: AppColors.green),
+                        borderRadius: BorderRadius.circular(6)
+                      ),
+                      child: Text(
+                        '> enter',
+                        style: textTheme.bodyMedium?.copyWith(color: AppColors.green),
+                      ),
+                    ),
                   )
                 ],
               ),
