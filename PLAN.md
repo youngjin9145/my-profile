@@ -34,17 +34,17 @@
 - [x] `flutter create` 로 웹 프로젝트 생성
 - [x] pubspec.yaml 에 패키지 6개 추가
 - [x] main.dart 정리 (기본 카운터 앱 제거 → 다크 캔버스)
-- [ ] `flutter run -d chrome` 으로 화면 뜨는지 확인 ✅ ← 네가 직접 실행!
+- [x] `flutter run -d chrome` 으로 화면 뜨는지 확인 ✅
 
-### Phase 1 — 테마 토대 (Dev Dark 룩)
-- [ ] `theme/app_theme.dart` — 색 팔레트 + 모노스페이스 텍스트 스타일
-- [ ] `widgets/terminal_window.dart` — 터미널 창 프레임 (상단 신호등 점 3개)
-- [ ] 샘플 화면으로 룩앤필 확인 ✅
+### Phase 1 — 테마 토대 (Dev Dark 룩) ✅ 완료
+- [x] `theme/app_theme.dart` — 색 팔레트 + 모노스페이스 텍스트 스타일
+- [x] `widgets/terminal_window.dart` — 터미널 창 프레임 (상단 신호등 점 3개)
+- [x] 샘플 화면으로 룩앤필 확인 (BootScreen에 터미널 창 표시)
 
-### Phase 2 — 인터랙션 부품 (핵심 재미)
-- [ ] `widgets/custom_cursor.dart` — 마우스 따라다니는 커서 + 트레일
-- [ ] `widgets/magnetic.dart` — 자석 호버 래퍼
-- [ ] `widgets/reveal_on_scroll.dart` — 스크롤 진입 시 등장 애니메이션
+### Phase 2 — 인터랙션 부품 (핵심 재미) 🚧 진행 중
+- [x] `widgets/magnetic.dart` — 자석 호버 래퍼 (Step 2.1 ✅)
+- [ ] `widgets/custom_cursor.dart` — 마우스 따라다니는 커서 + 트레일 (Step 2.2 ← 다음)
+- [ ] `widgets/reveal_on_scroll.dart` — 스크롤 진입 시 등장 애니메이션 (Step 2.3)
 - [ ] 작은 플레이그라운드로 3개 부품 각각 동작 확인 ✅
 
 ### Phase 3 — 섹션 조립 (하나씩)
