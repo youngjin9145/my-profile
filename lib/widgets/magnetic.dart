@@ -8,7 +8,7 @@ class Magnetic extends StatefulWidget {
   final double strength;
 
   @override
-  _MagneticState createState() => _MagneticState();
+  State<Magnetic> createState() => _MagneticState();
 }
 
 class _MagneticState extends State<Magnetic> {

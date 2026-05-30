@@ -8,7 +8,7 @@ class CustomCursor extends StatefulWidget {
   final Widget child;
 
   @override
-  _CustomCursorState createState() => _CustomCursorState();
+  State<CustomCursor> createState() => _CustomCursorState();
 }
 
 class _CustomCursorState extends State<CustomCursor> {
