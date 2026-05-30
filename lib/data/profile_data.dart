@@ -1,3 +1,5 @@
+import '../models/project.dart';
+
 class ProfileData {
   ProfileData._();
 
@@ -28,5 +30,31 @@ class ProfileData {
   static const List<String> awards = [
     'Industrial Engineer Information Security',
     'Silver — National Skills Competition (Cyber Security)',
+    'Golden — Regional Skills Competition (Mobile App)',
+  ];
+
+  static const List<Project> projects = [
+    Project(
+      name: 'Survev.io Game Hack',
+      description:
+          'Aimbot & ESP for survev.io, an open-source browser game — a reverse-engineering exercise.',
+      tech: ['JavaScript'],
+      image: 'assets/projects/survev.png',
+      note:
+          'Built & tested in an isolated environment only — never used against real players.',
+    ),
+    Project(
+      name: 'Tarot Reader',
+      description:
+          'Card-pick tarot app with multiple spreads — birth-date, love, and more.',
+      tech: ['Flutter', 'Dart'],
+      image: 'assets/projects/tarot.png',
+    ),
+    Project(
+      name: 'Car Control',
+      description: 'Vehicle remote-control prototype built with sample data.',
+      tech: ['Flutter', 'Dart'],
+      image: 'assets/projects/car.png',
+    ),
   ];
 }

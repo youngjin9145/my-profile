@@ -51,8 +51,8 @@
 - [x] Hero — 타이핑 애니메이션 (`whoami` → 이름/직함) (Step 3.1 ✅)
 - [x] About — 자기소개 + 리빌 (Step 3.2 ✅)
 - [x] Skills — 기술 배지 + 스크롤 리빌 (Step 3.3 ✅)
-- [ ] Projects — 호버 인터랙션 카드 + 자석 효과 (Step 3.4 ← 다음)
-- [ ] Contact — 자석 소셜 버튼 + url_launcher
+- [x] Projects — 호버 인터랙션 카드 + 자석 효과 (Step 3.4 ✅)
+- [ ] Contact — 자석 소셜 버튼 + url_launcher (Step 3.5 ← 다음)
 - [ ] 전체 스크롤 흐름 확인 ✅
 
 ### Phase 4 — 레이아웃 & 반응형 마감
