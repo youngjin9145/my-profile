@@ -10,14 +10,18 @@ class TerminalWindow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final radius = BorderRadius.circular(10);
 
     return Container(
+      clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
+        borderRadius: radius,
         color: AppColors.surface,
-        borderRadius: BorderRadius.circular(10),
+      ),
+      foregroundDecoration: BoxDecoration(
+        borderRadius: radius,
         border: Border.all(color: AppColors.border),
       ),
-      clipBehavior: Clip.antiAlias,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
