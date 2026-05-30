@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'theme/app_theme.dart';
+import 'widgets/terminal_window.dart';
 
 void main() {
   runApp(const ShadowPortfolioApp());
@@ -12,7 +13,7 @@ class ShadowPortfolioApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Cid Kagenou',
-      debugShowCheckedModeBanner: false, // hide the top-right "DEBUG" ribbon
+      debugShowCheckedModeBanner: false,
       theme: AppTheme.dark,
       home: const BootScreen(),
     );
@@ -28,9 +29,36 @@ class BootScreen extends StatelessWidget {
 
     return Scaffold(
       body: Center(
-        child: Text(
-          'shadow_portfolio :: booting...',
-          style: textTheme.titleMedium?.copyWith(color: AppColors.green),
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 520),
+           child: Padding(
+            padding: const EdgeInsets.all(24),
+            child: TerminalWindow(
+              title: 'cid@shadow: ~',
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    '\$ whoami',
+                    style: textTheme.bodyMedium?.copyWith(color: AppColors.textDim),
+                  ),
+                  Text(
+                    'Cid Kagenou',
+                    style: textTheme.titleLarge?.copyWith(color: AppColors.green),
+                  ),
+                  const SizedBox(height: 14,),
+                  Text(
+                    '\$ cat role.txt',
+                    style: textTheme.bodyMedium?.copyWith(color: AppColors.textDim),
+                  ),
+                  Text(
+                    'Flutter App Developer · Security Enthusiast'
+                  )
+                ],
+              ),
+            ),
+           ),
         ),
       ),
     );
