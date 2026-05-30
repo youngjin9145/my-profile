@@ -15,4 +15,18 @@ class ProfileData {
       'I craft cross-platform apps with Flutter & Dart, and spend my off-hours '
       'reverse-engineering games and poking at systems to learn how they really work.\n\n'
       'I like building things — and understanding them well enough to take them apart.';
+
+  static const List<String> skills = [
+    'Dart',
+    'Flutter',
+    'Cross-platform Apps',
+    'Reverse Engineering',
+    'Game Hacking',
+    'Cybersecurity',
+  ];
+
+  static const List<String> awards = [
+    'Industrial Engineer Information Security',
+    'Silver — National Skills Competition (Cyber Security)',
+  ];
 }

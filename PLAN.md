@@ -50,8 +50,8 @@
 ### Phase 3 — 섹션 조립 (하나씩) 🚧 진행 중
 - [x] Hero — 타이핑 애니메이션 (`whoami` → 이름/직함) (Step 3.1 ✅)
 - [x] About — 자기소개 + 리빌 (Step 3.2 ✅)
-- [ ] Skills — 기술 배지 + 스크롤 리빌 (Step 3.3 ← 다음)
-- [ ] Projects — 호버 인터랙션 카드 + 자석 효과
+- [x] Skills — 기술 배지 + 스크롤 리빌 (Step 3.3 ✅)
+- [ ] Projects — 호버 인터랙션 카드 + 자석 효과 (Step 3.4 ← 다음)
 - [ ] Contact — 자석 소셜 버튼 + url_launcher
 - [ ] 전체 스크롤 흐름 확인 ✅
 
