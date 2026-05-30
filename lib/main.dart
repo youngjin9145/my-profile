@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'theme/app_theme.dart';
 import 'widgets/terminal_window.dart';
 import 'widgets/magnetic.dart';
+import 'widgets/custom_cursor.dart';
 
 void main() {
   runApp(const ShadowPortfolioApp());
@@ -16,7 +17,7 @@ class ShadowPortfolioApp extends StatelessWidget {
       title: 'Cid Kagenou',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.dark,
-      home: const BootScreen(),
+      home: const CustomCursor(child: BootScreen())
     );
   }
 }
