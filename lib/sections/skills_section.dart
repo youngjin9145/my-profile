@@ -27,7 +27,7 @@ class SkillsSection extends StatelessWidget {
             runSpacing: 10,
             children: [
               for (final skill in ProfileData.skills)
-                Magnetic(strength: 0.4, child: _SkillsBadge(label: skill)),
+                Magnetic(child: _SkillsBadge(label: skill)),
             ],
           ),
 
