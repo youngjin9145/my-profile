@@ -41,11 +41,11 @@
 - [x] `widgets/terminal_window.dart` — 터미널 창 프레임 (상단 신호등 점 3개)
 - [x] 샘플 화면으로 룩앤필 확인 (BootScreen에 터미널 창 표시)
 
-### Phase 2 — 인터랙션 부품 (핵심 재미) 🚧 진행 중
+### Phase 2 — 인터랙션 부품 (핵심 재미) ✅ 완료
 - [x] `widgets/magnetic.dart` — 자석 호버 래퍼 (Step 2.1 ✅)
 - [x] `widgets/custom_cursor.dart` — 마우스 따라다니는 커서 + 트레일 (Step 2.2 ✅)
-- [ ] `widgets/reveal_on_scroll.dart` — 스크롤 진입 시 등장 애니메이션 (Step 2.3 ← 다음)
-- [ ] 작은 플레이그라운드로 3개 부품 각각 동작 확인 ✅
+- [x] `widgets/reveal_on_scroll.dart` — 스크롤 진입 시 등장 애니메이션 (Step 2.3 ✅)
+- [x] 작은 플레이그라운드로 3개 부품 각각 동작 확인 (BootScreen 스크롤 데모, Step 2.4 ✅)
 
 ### Phase 3 — 섹션 조립 (하나씩)
 - [ ] Hero — 타이핑 애니메이션 (`whoami` → 이름/직함)
