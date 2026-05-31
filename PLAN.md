@@ -55,11 +55,11 @@
 - [x] Contact — 자석 소셜 버튼 + url_launcher (Step 3.5 ✅)
 - [x] 전체 스크롤 흐름 확인 (Hero→About→Skills→Projects→Contact)
 
-### Phase 4 — 레이아웃 & 반응형 마감 🚧 진행 중
-- [x] 모바일 커서 끄기(터치 감지) + 텍스트 선택(SelectionArea + DefaultSelectionStyle) (Step 4.1 ✅)
-- [ ] 데스크탑/모바일 반응형 폭·레이아웃 (Step 4.2 ← 다음)
-- [ ] (선택) 상단 내비게이션
-- [ ] 전체 폴리시 확인 ✅
+### Phase 4 — 레이아웃 & 반응형 마감 ✅ 완료
+- [x] 모바일 커서 끄기(터치 감지 PointerDeviceKind) + 텍스트 선택(SelectionArea + DefaultSelectionStyle)
+- [x] 데스크탑/모바일 반응형 폭·레이아웃 (maxWidth 800 → 좁은 화면 자동 대응, 모바일 스샷 확인)
+- [~] 상단 내비게이션 — 일단 생략 (필요시 나중에)
+- [x] 전체 폴리시 확인 (모바일 확인 + 오타 수정)
 
 ### Phase 5 — GitHub Pages 배포
 - [ ] `flutter build web` (base href 설정)

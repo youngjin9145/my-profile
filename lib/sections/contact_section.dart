@@ -25,7 +25,7 @@ class ContactSection extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           Text(
-            "Let's build someting from the shadows.",
+            "Let's build something from the shadows.",
             style: textTheme.titleMedium?.copyWith(color: AppColors.text),
           ),
           const SizedBox(height: 20),

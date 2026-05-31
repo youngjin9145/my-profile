@@ -1,5 +1,5 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import '../theme/app_theme.dart';
 
 class CustomCursor extends StatefulWidget {
@@ -15,21 +15,25 @@ class _CustomCursorState extends State<CustomCursor> {
   Offset _mouse = Offset.zero;
   bool _hasMouse = false;
 
-  void _onHover(PointerHoverEvent event) {}
+  void _handlePointer(PointerEvent event) {
+    if (event.kind == PointerDeviceKind.mouse) {
+      setState(() {
+        _mouse = event.localPosition;
+        _hasMouse = true;
+      });
+    } else if (_hasMouse) {
+      setState(() => _hasMouse = false);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Listener(
-      onPointerHover: (event) => setState(() {
-        _mouse = event.localPosition;
-        _hasMouse = true;
-      }),
-      onPointerMove: (event) => setState(() {
-        _mouse = event.localPosition;
-      }),
+      onPointerHover: _handlePointer,
+      onPointerMove: _handlePointer,
+      onPointerDown: _handlePointer,
       child: MouseRegion(
         cursor: _hasMouse ? SystemMouseCursors.none : MouseCursor.defer,
-        onHover: (event) => _onHover(event),
         child: Stack(
           children: [
             widget.child,
