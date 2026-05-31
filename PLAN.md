@@ -1,7 +1,9 @@
-# 🚀 Peter's Dev Portfolio — 개발 플랜
+# 🚀 Youngjin Lee's Dev Portfolio — 개발 플랜
 
 > Flutter Web 기반 인터랙티브 개발자 프로필 사이트
 > 한 단계씩 같이 만들고, 매 단계 브라우저로 실행해 눈으로 확인하며 진행한다.
+
+**🎉 완성 & 라이브:** https://yj0.app/ — Phase 0~5 전부 완료 ✅
 
 ## 📌 확정된 스펙
 
@@ -61,21 +63,21 @@
 - [~] 상단 내비게이션 — 일단 생략 (필요시 나중에)
 - [x] 전체 폴리시 확인 (모바일 확인 + 오타 수정)
 
-### Phase 5 — GitHub Pages 배포
-- [ ] `flutter build web` (base href 설정)
-- [ ] GitHub 저장소 + Actions 자동 배포
-- [ ] 실제 URL 접속 확인 ✅
+### Phase 5 — GitHub Pages 배포 ✅ 완료
+- [x] `flutter build web` (base href `/my-profile/`)
+- [x] GitHub 저장소 + Actions 자동 배포 (`.github/workflows/deploy.yml`)
+- [x] 실제 URL 접속 확인 → https://yj0.app/
 
 ---
 
 ## 📝 Profile Content (English — goes on the site)
 
-- **Handle**: Cid Kagenou
+- **Handle**: Youngjin Lee
 - **Title**: Flutter App Developer · Security Enthusiast
 - **Skills**: Dart, Flutter (mobile & web app development)
 - **Certifications & Awards**:
   - Industrial Engineer Information Security (Korean national certification)
   - Silver Medal — National Skills Competition (Cyber Security)
 - **Interests**: Building game hacks & reverse engineering (for fun)
-- **Contact**: GitHub / LinkedIn / Email — _links TBD_
-- **Projects**: _TBD (collect in Phase 3)_
+- **Contact**: GitHub · LinkedIn · Email ✅
+- **Projects**: Survev.io Game Hack · Tarot Reader · Car Control ✅

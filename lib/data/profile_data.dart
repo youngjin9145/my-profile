@@ -3,8 +3,8 @@ import '../models/project.dart';
 class ProfileData {
   ProfileData._();
 
-  static const String handle = 'Cid Kagenou';
-  static const String terminalTitle = 'cid@shadow: ~';
+  static const String handle = 'Youngjin Lee';
+  static const String terminalTitle = 'yj@shadow: ~';
 
   static const List<String> roles = [
     'Flutter App Developer',
@@ -62,4 +62,5 @@ class ProfileData {
   static const String linkedin =
       'https://www.linkedin.com/in/%EC%98%81%EC%A7%84-%EC%9D%B4-089a013a5/';
   static const String email = 'aronia3006@gmail.com';
+  static const String instagram = 'https://www.instagram.com/realyoung___public/';
 }

@@ -44,6 +44,11 @@ class ContactSection extends StatelessWidget {
                 url: ProfileData.linkedin,
               ),
               _SocialButton(
+                icon: FontAwesomeIcons.instagram,
+                label: 'Instagram',
+                url: ProfileData.instagram,
+              ),
+              _SocialButton(
                 icon: FontAwesomeIcons.envelope,
                 label: 'Email',
                 url: 'mailto:${ProfileData.email}',

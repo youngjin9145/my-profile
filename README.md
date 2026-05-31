@@ -1,6 +1,8 @@
-# my-profile — Cid Kagenou
+# my-profile — Youngjin Lee
 
 Interactive developer portfolio built with **Flutter Web**.
+
+🔗 **Live:** https://yj0.app/
 
 > Terminal / dev-dark aesthetic — custom cursor, magnetic hovers, typewriter text, and scroll-reveal animations.
 
@@ -16,6 +18,10 @@ flutter pub get
 flutter run -d chrome
 ```
 
+## Deploy
+
+Auto-deployed to **GitHub Pages** via GitHub Actions on every push to `main`.
+
 ## Status
 
-🚧 Work in progress — see [PLAN.md](./PLAN.md) for the build roadmap.
+✅ Complete & live.
