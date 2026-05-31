@@ -55,9 +55,10 @@
 - [x] Contact — 자석 소셜 버튼 + url_launcher (Step 3.5 ✅)
 - [x] 전체 스크롤 흐름 확인 (Hero→About→Skills→Projects→Contact)
 
-### Phase 4 — 레이아웃 & 반응형 마감
-- [ ] 단일 페이지 스크롤 + 상단 내비게이션
-- [ ] 데스크탑/모바일 반응형 분기
+### Phase 4 — 레이아웃 & 반응형 마감 🚧 진행 중
+- [x] 모바일 커서 끄기(터치 감지) + 텍스트 선택(SelectionArea + DefaultSelectionStyle) (Step 4.1 ✅)
+- [ ] 데스크탑/모바일 반응형 폭·레이아웃 (Step 4.2 ← 다음)
+- [ ] (선택) 상단 내비게이션
 - [ ] 전체 폴리시 확인 ✅
 
 ### Phase 5 — GitHub Pages 배포

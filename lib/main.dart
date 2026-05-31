@@ -32,25 +32,30 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Align(
-          alignment: Alignment.topCenter,
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 800),
-            child: const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 80),
-              child: Column(
-                children: [
-                  HeroSection(),
-                  SizedBox(height: 100),
-                  RevealOnScroll(child: AboutSection()),
-                  SizedBox(height: 100),
-                  RevealOnScroll(child: SkillsSection()),
-                  SizedBox(height: 100),
-                  RevealOnScroll(child: ProjectsSection()),
-                  SizedBox(height: 100,),
-                  RevealOnScroll(child: ContactSection())
-                ],
+      body: SelectionArea(
+        child: DefaultSelectionStyle(
+          mouseCursor: SystemMouseCursors.none,
+          child: SingleChildScrollView(
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 800),
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 24, vertical: 80),
+                  child: Column(
+                    children: [
+                      HeroSection(),
+                      SizedBox(height: 100),
+                      RevealOnScroll(child: AboutSection()),
+                      SizedBox(height: 100),
+                      RevealOnScroll(child: SkillsSection()),
+                      SizedBox(height: 100),
+                      RevealOnScroll(child: ProjectsSection()),
+                      SizedBox(height: 100),
+                      RevealOnScroll(child: ContactSection()),
+                    ],
+                  ),
+                ),
               ),
             ),
           ),
