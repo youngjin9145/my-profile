@@ -57,4 +57,9 @@ class ProfileData {
       image: 'assets/projects/car.png',
     ),
   ];
+
+  static const String github = 'https://github.com/youngjin9145';
+  static const String linkedin =
+      'https://www.linkedin.com/in/%EC%98%81%EC%A7%84-%EC%9D%B4-089a013a5/';
+  static const String email = 'aronia3006@gmail.com';
 }

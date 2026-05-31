@@ -5,6 +5,8 @@ import 'widgets/custom_cursor.dart';
 import 'sections/hero_section.dart';
 import 'sections/about_section.dart';
 import 'sections/skills_section.dart';
+import 'sections/projects_section.dart';
+import 'sections/contact_section.dart';
 
 void main() {
   runApp(const ShadowPortfolioApp());
@@ -43,7 +45,11 @@ class HomePage extends StatelessWidget {
                   SizedBox(height: 100),
                   RevealOnScroll(child: AboutSection()),
                   SizedBox(height: 100),
-                  RevealOnScroll(child: SkillsSection())
+                  RevealOnScroll(child: SkillsSection()),
+                  SizedBox(height: 100),
+                  RevealOnScroll(child: ProjectsSection()),
+                  SizedBox(height: 100,),
+                  RevealOnScroll(child: ContactSection())
                 ],
               ),
             ),

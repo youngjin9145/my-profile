@@ -47,13 +47,13 @@
 - [x] `widgets/reveal_on_scroll.dart` — 스크롤 진입 시 등장 애니메이션 (Step 2.3 ✅)
 - [x] 작은 플레이그라운드로 3개 부품 각각 동작 확인 (BootScreen 스크롤 데모, Step 2.4 ✅)
 
-### Phase 3 — 섹션 조립 (하나씩) 🚧 진행 중
+### Phase 3 — 섹션 조립 (하나씩) ✅ 완료
 - [x] Hero — 타이핑 애니메이션 (`whoami` → 이름/직함) (Step 3.1 ✅)
 - [x] About — 자기소개 + 리빌 (Step 3.2 ✅)
 - [x] Skills — 기술 배지 + 스크롤 리빌 (Step 3.3 ✅)
 - [x] Projects — 호버 인터랙션 카드 + 자석 효과 (Step 3.4 ✅)
-- [ ] Contact — 자석 소셜 버튼 + url_launcher (Step 3.5 ← 다음)
-- [ ] 전체 스크롤 흐름 확인 ✅
+- [x] Contact — 자석 소셜 버튼 + url_launcher (Step 3.5 ✅)
+- [x] 전체 스크롤 흐름 확인 (Hero→About→Skills→Projects→Contact)
 
 ### Phase 4 — 레이아웃 & 반응형 마감
 - [ ] 단일 페이지 스크롤 + 상단 내비게이션
