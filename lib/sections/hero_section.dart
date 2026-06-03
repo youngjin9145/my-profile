@@ -3,6 +3,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import '../data/profile_data.dart';
 import '../theme/app_theme.dart';
 import '../widgets/terminal_window.dart';
+import '../widgets/glitch_text.dart';
 
 class HeroSection extends StatelessWidget {
   const HeroSection({super.key});
@@ -21,10 +22,11 @@ class HeroSection extends StatelessWidget {
             '\$ whoami',
             style: textTheme.bodyMedium?.copyWith(color: AppColors.textDim)
           ),
-          const SizedBox(height: 4),
-          Text(
-            ProfileData.handle,
-            style: textTheme.headlineMedium?.copyWith(color: AppColors.green, fontWeight: FontWeight.bold),
+          const SizedBox(height: 8),
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            alignment: Alignment.centerLeft,
+            child: GlitchText(ProfileData.handle),
           ),
           const SizedBox(height: 18),
 
