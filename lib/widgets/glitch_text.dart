@@ -4,7 +4,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 
 /// Neon CRT-terminal "glitch" rendering of [text].
 ///
-/// A VT323 pixel font with a layered cyan bloom, a magenta/cyan
+/// A Snowburst One display font with a layered cyan bloom, a magenta/cyan
 /// chromatic-aberration (RGB split) edge, faint scanlines, and — when
 /// [animate] is true — an occasional flicker that otherwise sits still.
 /// Used for the hero name.
@@ -12,7 +12,7 @@ class GlitchText extends StatelessWidget {
   const GlitchText(
     this.text, {
     super.key,
-    this.fontSize = 72,
+    this.fontSize = 50,
     this.animate = true,
   });
 
@@ -26,7 +26,7 @@ class GlitchText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final base = GoogleFonts.vt323(fontSize: fontSize, letterSpacing: 1, height: 1);
+    final base = GoogleFonts.snowburstOne(fontSize: fontSize, letterSpacing: 1, height: 1);
 
     // Bright core with a soft, layered cyan neon bloom.
     final core = base.copyWith(
@@ -55,7 +55,7 @@ class GlitchText extends StatelessWidget {
       clipBehavior: Clip.none, // let the bloom bleed past the text box
       children: [
         Transform.translate(
-          offset: const Offset(-2, 0),
+          offset: const Offset(-3, 0),
           child: Opacity(opacity: .90, child: Text(text, style: magentaGhost)),
         ),
         Transform.translate(
