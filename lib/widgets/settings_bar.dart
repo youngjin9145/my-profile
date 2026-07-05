@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import '../models/lang.dart';
 import '../state/app_scope.dart';
 import '../theme/terminal_colors.dart';
+import '../theme/theme_variant.dart';
 
-/// 우상단 고정 설정 바 — 현재는 EN|KO 언어 토글만. (테마 버튼은 Phase 2)
+/// 우상단 고정 설정 바 — EN|KO 언어 토글 + 테마 순환 버튼.
 class SettingsBar extends StatelessWidget {
   const SettingsBar({super.key});
 
@@ -18,6 +19,13 @@ class SettingsBar extends StatelessWidget {
           label: settings.lang == Lang.en ? 'EN' : 'KO',
           onTap: () => AppScope.of(context, listen: false).toggleLang(),
           color: onColor,
+        ),
+        const SizedBox(width: 8),
+        _Pill(
+          label: settings.theme.label,
+          onTap: () =>
+              AppScope.of(context, listen: false).setTheme(settings.theme.next),
+          color: context.term.accent,
         ),
       ],
     );

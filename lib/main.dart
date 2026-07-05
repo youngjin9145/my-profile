@@ -39,7 +39,7 @@ class ShadowPortfolioApp extends StatelessWidget {
         builder: (context, _) => MaterialApp(
           title: ProfileData.handle,
           debugShowCheckedModeBanner: false,
-          theme: AppTheme.dark, // Phase 2에서 AppTheme.forVariant(settings.theme)
+          theme: AppTheme.forVariant(settings.theme), // 선택된 테마 반영
           home: const CustomCursor(child: HomePage()),
         ),
       ),
