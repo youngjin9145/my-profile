@@ -24,6 +24,10 @@ class AppColors {
 class AppTheme {
   AppTheme._();
 
+  // JetBrains Mono has no Hangul glyphs; fall back to a monospace Korean font
+  // (NanumGothicCoding, bundled) so Korean text renders reliably.
+  static const List<String> _fontFallback = ['NanumGothicCoding'];
+
   static ThemeData get dark {
     final base = ThemeData.dark();
 
@@ -34,6 +38,7 @@ class AppTheme {
       textTheme: mono.apply(
         bodyColor: AppColors.text,
         displayColor: AppColors.text,
+        fontFamilyFallback: _fontFallback,
       ),
       colorScheme: base.colorScheme.copyWith(
         primary: AppColors.green,
@@ -65,7 +70,7 @@ class AppTheme {
     return base.copyWith(
       scaffoldBackgroundColor: p.background,
       extensions: [p],
-      textTheme: mono.apply(bodyColor: p.text, displayColor: p.text),
+      textTheme: mono.apply(bodyColor: p.text, displayColor: p.text, fontFamilyFallback: _fontFallback),
       colorScheme: base.colorScheme.copyWith(
         primary: p.accent, secondary: p.cyan, surface: p.surface),
     );
