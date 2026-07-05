@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../data/profile_data.dart';
+import '../state/app_scope.dart';
 import '../theme/app_theme.dart';
 import '../widgets/magnetic.dart';
 import '../widgets/terminal_window.dart';
@@ -12,6 +13,7 @@ class ContactSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final lang = AppScope.of(context).lang;
 
     return TerminalWindow(
       title: 'contact',
@@ -25,7 +27,7 @@ class ContactSection extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           Text(
-            "Let's build something from the shadows.",
+            ProfileData.contactTagline.of(lang),
             style: textTheme.titleMedium?.copyWith(color: AppColors.text),
           ),
           const SizedBox(height: 20),

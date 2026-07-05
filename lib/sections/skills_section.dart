@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../data/profile_data.dart';
+import '../state/app_scope.dart';
 import '../theme/app_theme.dart';
 import '../widgets/magnetic.dart';
 import '../widgets/terminal_window.dart';
@@ -10,6 +11,7 @@ class SkillsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final lang = AppScope.of(context).lang;
 
     return TerminalWindow(
       title: 'skills',
@@ -51,7 +53,7 @@ class SkillsSection extends StatelessWidget {
                   ),
                   Expanded(
                     child: Text(
-                      award,
+                      award.of(lang),
                       style: textTheme.bodyLarge?.copyWith(
                         color: AppColors.text,
                       ),

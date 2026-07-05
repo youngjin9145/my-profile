@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import '../data/profile_data.dart';
+import '../state/app_scope.dart';
 import '../theme/app_theme.dart';
 import '../widgets/terminal_window.dart';
 import '../widgets/glitch_text.dart';
@@ -11,6 +12,7 @@ class HeroSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final lang = AppScope.of(context).lang;
 
     return TerminalWindow(
       title: ProfileData.terminalTitle,
@@ -51,7 +53,7 @@ class HeroSection extends StatelessWidget {
               animatedTexts: [
                 for (final role in ProfileData.roles)
                   TypewriterAnimatedText(
-                    role,
+                    role.of(lang),
                     textStyle: textTheme.titleMedium?.copyWith(color: AppColors.cyan),
                     speed: const Duration(milliseconds: 70),
                   )

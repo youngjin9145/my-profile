@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../data/profile_data.dart';
 import '../models/project.dart';
+import '../state/app_scope.dart';
 import '../theme/app_theme.dart';
 import '../widgets/terminal_window.dart';
 
@@ -47,6 +48,7 @@ class _ProjectCardState extends State<ProjectCard> {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final lang = AppScope.of(context).lang;
     final project = widget.project;
 
     return MouseRegion(
@@ -114,7 +116,7 @@ class _ProjectCardState extends State<ProjectCard> {
                   if (project.note != null) ...[
                     const SizedBox(height: 6),
                     Text(
-                      '// ${project.note}',
+                      '// ${project.note!.of(lang)}',
                       style: textTheme.bodySmall?.copyWith(
                         color: AppColors.textDim,
                         fontStyle: FontStyle.italic,

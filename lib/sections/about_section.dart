@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../data/profile_data.dart';
+import '../state/app_scope.dart';
 import '../theme/app_theme.dart';
 import '../widgets/terminal_window.dart';
 
@@ -9,6 +10,7 @@ class AboutSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final lang = AppScope.of(context).lang;
 
     return TerminalWindow(
       title: 'about.md',
@@ -22,7 +24,7 @@ class AboutSection extends StatelessWidget {
           ),
           const SizedBox(height: 12),
           Text(
-            ProfileData.about,
+            ProfileData.about.of(lang),
             style: textTheme.bodyLarge?.copyWith(
               color: AppColors.text,
               height: 1.6,

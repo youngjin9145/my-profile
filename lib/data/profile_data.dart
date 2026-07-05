@@ -75,6 +75,11 @@ class ProfileData {
     ),
   ];
 
+  static const contactTagline = L10n(
+    "Let's build something from the shadows.",
+    '그림자 속에서 무언가 만들어봅시다.',
+  );
+
   static const String github = 'https://github.com/youngjin9145';
   static const String linkedin =
       'https://www.linkedin.com/in/%EC%98%81%EC%A7%84-%EC%9D%B4-089a013a5/';
