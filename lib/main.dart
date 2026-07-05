@@ -8,6 +8,7 @@ import 'widgets/custom_cursor.dart';
 import 'widgets/scroll_hint.dart';
 import 'widgets/settings_bar.dart';
 import 'sections/hero_section.dart';
+import 'sections/terminal_section.dart';
 import 'sections/about_section.dart';
 import 'sections/skills_section.dart';
 import 'sections/projects_section.dart';
@@ -96,6 +97,8 @@ class _HomePageState extends State<HomePage> {
                       child: Column(
                         children: [
                           HeroSection(),
+                          SizedBox(height: 40),
+                          RevealOnScroll(child: TerminalSection()),
                           SizedBox(height: 100),
                           RevealOnScroll(child: AboutSection()),
                           SizedBox(height: 100),
