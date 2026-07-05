@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import '../data/profile_data.dart';
-import '../theme/app_theme.dart';
+import '../state/app_scope.dart';
+import '../theme/terminal_colors.dart';
 import '../widgets/terminal_window.dart';
 import '../widgets/glitch_text.dart';
 
@@ -11,6 +12,8 @@ class HeroSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final lang = AppScope.of(context).lang;
+    final term = context.term;
 
     return TerminalWindow(
       title: ProfileData.terminalTitle,
@@ -20,7 +23,7 @@ class HeroSection extends StatelessWidget {
         children: [
           Text(
             '\$ whoami',
-            style: textTheme.bodyMedium?.copyWith(color: AppColors.textDim)
+            style: textTheme.bodyMedium?.copyWith(color: term.textDim)
           ),
           const SizedBox(height: 8),
           FittedBox(
@@ -33,7 +36,7 @@ class HeroSection extends StatelessWidget {
           Text(
             '\$ cat roles.txt',
             style: textTheme.bodyMedium?.copyWith(
-              color: AppColors.textDim
+              color: term.textDim
             ),
           ),
           const SizedBox(height: 4,),
@@ -42,7 +45,7 @@ class HeroSection extends StatelessWidget {
             Text(
               '> ',
               style: textTheme.titleMedium?.copyWith(
-                color: AppColors.cyan
+                color: term.cyan
               ),
             ),
             AnimatedTextKit(
@@ -51,8 +54,8 @@ class HeroSection extends StatelessWidget {
               animatedTexts: [
                 for (final role in ProfileData.roles)
                   TypewriterAnimatedText(
-                    role,
-                    textStyle: textTheme.titleMedium?.copyWith(color: AppColors.cyan),
+                    role.of(lang),
+                    textStyle: textTheme.titleMedium?.copyWith(color: term.cyan),
                     speed: const Duration(milliseconds: 70),
                   )
               ],

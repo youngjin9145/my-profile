@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import '../data/profile_data.dart';
 import '../models/project.dart';
-import '../theme/app_theme.dart';
+import '../state/app_scope.dart';
+import '../theme/terminal_colors.dart';
 import '../widgets/terminal_window.dart';
 
 class ProjectsSection extends StatelessWidget {
@@ -10,6 +11,7 @@ class ProjectsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final term = context.term;
 
     return TerminalWindow(
       title: 'projects',
@@ -19,7 +21,7 @@ class ProjectsSection extends StatelessWidget {
         children: [
           Text(
             '\$ ls projects/',
-            style: textTheme.bodyMedium?.copyWith(color: AppColors.textDim),
+            style: textTheme.bodyMedium?.copyWith(color: term.textDim),
           ),
           const SizedBox(height: 16),
           for (final project in ProfileData.projects) ...[
@@ -47,6 +49,8 @@ class _ProjectCardState extends State<ProjectCard> {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final lang = AppScope.of(context).lang;
+    final term = context.term;
     final project = widget.project;
 
     return MouseRegion(
@@ -57,12 +61,12 @@ class _ProjectCardState extends State<ProjectCard> {
         curve: Curves.easeOut,
         transform: Matrix4.translationValues(0, _hover ? -6 : 0, 0),
         decoration: BoxDecoration(
-          color: AppColors.surface,
+          color: term.surface,
           borderRadius: BorderRadius.circular(10),
           boxShadow: _hover
               ? [
                   BoxShadow(
-                    color: AppColors.green.withValues(alpha: 0.25),
+                    color: term.accent.withValues(alpha: 0.25),
                     blurRadius: 20,
                   ),
                 ]
@@ -71,7 +75,7 @@ class _ProjectCardState extends State<ProjectCard> {
         foregroundDecoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
-            color: _hover ? AppColors.green : AppColors.border,
+            color: _hover ? term.accent : term.border,
           ),
         ),
         child: Row(
@@ -84,12 +88,12 @@ class _ProjectCardState extends State<ProjectCard> {
                 width: 90,
                 fit: BoxFit.fill,
                 errorBuilder: (context, error, stackTrace) => Container(
-                  color: AppColors.background,
+                  color: term.background,
                   alignment: Alignment.center,
                   child: Text(
                     'no image',
                     style: textTheme.bodySmall?.copyWith(
-                      color: AppColors.textDim,
+                      color: term.textDim,
                     ),
                   ),
                 ),
@@ -104,7 +108,7 @@ class _ProjectCardState extends State<ProjectCard> {
                   Text(
                     project.name,
                     style: textTheme.titleMedium?.copyWith(
-                      color: AppColors.green,
+                      color: term.accent,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -114,9 +118,9 @@ class _ProjectCardState extends State<ProjectCard> {
                   if (project.note != null) ...[
                     const SizedBox(height: 6),
                     Text(
-                      '// ${project.note}',
+                      '// ${project.note!.of(lang)}',
                       style: textTheme.bodySmall?.copyWith(
-                        color: AppColors.textDim,
+                        color: term.textDim,
                         fontStyle: FontStyle.italic,
                       ),
                     ),
@@ -132,7 +136,7 @@ class _ProjectCardState extends State<ProjectCard> {
                         Text(
                           '🔒 Private',
                           style: textTheme.bodySmall?.copyWith(
-                            color: AppColors.textDim,
+                            color: term.textDim,
                           ),
                         ),
                     ],
@@ -155,17 +159,18 @@ class _TechTag extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final term = context.term;
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       decoration: BoxDecoration(
-        color: AppColors.background,
+        color: term.background,
         borderRadius: BorderRadius.circular(6),
-        border: Border.all(color: AppColors.border),
+        border: Border.all(color: term.border),
       ),
       child: Text(
         label,
-        style: textTheme.bodySmall?.copyWith(color: AppColors.cyan),
+        style: textTheme.bodySmall?.copyWith(color: term.cyan),
       ),
     );
   }

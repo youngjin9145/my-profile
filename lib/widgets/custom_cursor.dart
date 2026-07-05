@@ -1,6 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import '../theme/app_theme.dart';
+import '../theme/terminal_colors.dart';
 
 class CustomCursor extends StatefulWidget {
   const CustomCursor({super.key, required this.child});
@@ -28,6 +28,7 @@ class _CustomCursorState extends State<CustomCursor> {
 
   @override
   Widget build(BuildContext context) {
+    final term = context.term;
     return Listener(
       onPointerHover: _handlePointer,
       onPointerMove: _handlePointer,
@@ -50,7 +51,7 @@ class _CustomCursorState extends State<CustomCursor> {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(
-                        color: AppColors.green.withValues(alpha: 0.5),
+                        color: term.accent.withValues(alpha: 0.5),
                       ),
                     ),
                   ),
@@ -64,9 +65,9 @@ class _CustomCursorState extends State<CustomCursor> {
                   child: Container(
                     width: 8,
                     height: 8,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: AppColors.green,
+                      color: term.accent,
                     ),
                   ),
                 ),

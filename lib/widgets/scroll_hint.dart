@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import '../theme/app_theme.dart';
+import '../theme/terminal_colors.dart';
 
 /// "스크롤 내려" 힌트 — 아래로 통통 튀는 화살표 + 라벨.
 class ScrollHint extends StatelessWidget {
@@ -9,12 +9,13 @@ class ScrollHint extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final term = context.term;
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text('scroll', style: textTheme.bodySmall?.copyWith(color: AppColors.textDim)),
+        Text('scroll', style: textTheme.bodySmall?.copyWith(color: term.textDim)),
         const SizedBox(height: 2),
-        const Icon(Icons.keyboard_arrow_down, color: AppColors.green, size: 28),
+        Icon(Icons.keyboard_arrow_down, color: term.accent, size: 28),
       ],
     )
         .animate(onPlay: (c) => c.repeat(reverse: true)) // 무한 왕복 반복

@@ -1,3 +1,5 @@
+import 'l10n.dart';
+
 class Project {
   const Project({
     required this.name,
@@ -8,10 +10,10 @@ class Project {
     this.note,
   });
 
-  final String name;
-  final String description;
-  final List<String> tech;
+  final String name;          // 고유명사 — 번역 안 함
+  final L10n description;
+  final List<String> tech;    // 기술명 — 번역 안 함
   final String image;
   final String? link;
-  final String? note;
+  final L10n? note;
 }

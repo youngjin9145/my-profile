@@ -1,29 +1,50 @@
 import 'package:flutter/material.dart';
 import 'package:shadow_portfolio/widgets/reveal_on_scroll.dart';
 import 'theme/app_theme.dart';
+import 'state/app_settings.dart';
+import 'state/app_scope.dart';
+import 'state/settings_store.dart';
+import 'boot/boot_gate.dart';
 import 'widgets/custom_cursor.dart';
 import 'widgets/scroll_hint.dart';
+import 'widgets/settings_bar.dart';
 import 'sections/hero_section.dart';
+import 'sections/terminal_section.dart';
 import 'sections/about_section.dart';
 import 'sections/skills_section.dart';
 import 'sections/projects_section.dart';
 import 'sections/contact_section.dart';
 import 'data/profile_data.dart';
 
-void main() {
-  runApp(const ShadowPortfolioApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final loaded = await SettingsStore.load(); // 저장된 언어/테마 로드 (없으면 브라우저 로케일)
+  runApp(ShadowPortfolioApp(
+    settings: AppSettings(
+      lang: loaded.lang,
+      theme: loaded.theme,
+      onChanged: SettingsStore.save, // 변경 시 자동 영속
+    ),
+  ));
 }
 
 class ShadowPortfolioApp extends StatelessWidget {
-  const ShadowPortfolioApp({super.key});
+  const ShadowPortfolioApp({super.key, required this.settings});
+  final AppSettings settings;
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: ProfileData.handle,
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.dark,
-      home: const CustomCursor(child: HomePage()),
+    return AppScope(
+      settings: settings,
+      child: ListenableBuilder(
+        listenable: settings, // 설정 바뀌면 MaterialApp 재빌드
+        builder: (context, _) => MaterialApp(
+          title: ProfileData.handle,
+          debugShowCheckedModeBanner: false,
+          theme: AppTheme.forVariant(settings.theme), // 선택된 테마 반영
+          home: BootGate(child: const CustomCursor(child: HomePage())),
+        ),
+      ),
     );
   }
 }
@@ -77,6 +98,8 @@ class _HomePageState extends State<HomePage> {
                       child: Column(
                         children: [
                           HeroSection(),
+                          SizedBox(height: 40),
+                          RevealOnScroll(child: TerminalSection()),
                           SizedBox(height: 100),
                           RevealOnScroll(child: AboutSection()),
                           SizedBox(height: 100),
@@ -103,6 +126,12 @@ class _HomePageState extends State<HomePage> {
                     child: const Center(child: ScrollHint()),
                   ),
                 ),
+              ),
+              // 설정 바 — 우상단 고정 (EN|KO 토글)
+              const Positioned(
+                top: 20,
+                right: 20,
+                child: SafeArea(child: SettingsBar()),
               ),
             ],
           ),

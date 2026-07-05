@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'theme_variant.dart';
+import 'terminal_colors.dart';
 
 class AppColors {
   AppColors._(); // private 생성자로 인스턴스 생성 막음.
@@ -22,6 +24,10 @@ class AppColors {
 class AppTheme {
   AppTheme._();
 
+  // JetBrains Mono has no Hangul glyphs; fall back to a monospace Korean font
+  // (NanumGothicCoding, bundled) so Korean text renders reliably.
+  static const List<String> _fontFallback = ['NanumGothicCoding'];
+
   static ThemeData get dark {
     final base = ThemeData.dark();
 
@@ -32,12 +38,41 @@ class AppTheme {
       textTheme: mono.apply(
         bodyColor: AppColors.text,
         displayColor: AppColors.text,
+        fontFamilyFallback: _fontFallback,
       ),
       colorScheme: base.colorScheme.copyWith(
         primary: AppColors.green,
         secondary: AppColors.cyan,
         surface: AppColors.surface,
       )
+    );
+  }
+
+  static const _palettes = {
+    ThemeVariant.githubDark: TerminalColors(
+      background: Color(0xFF0D1117), surface: Color(0xFF161B22), border: Color(0xFF30363D),
+      accent: Color(0xFF3FB950), cyan: Color(0xFF39D0D8), amber: Color(0xFFE3B341),
+      text: Color(0xFFC9D1D9), textDim: Color(0xFF8B949E)),
+    ThemeVariant.matrixGreen: TerminalColors(
+      background: Color(0xFF0A0F0A), surface: Color(0xFF0F160F), border: Color(0xFF1F3A1F),
+      accent: Color(0xFF39FF14), cyan: Color(0xFF7CFFB2), amber: Color(0xFF9EFF6E),
+      text: Color(0xFFC8FFC8), textDim: Color(0xFF5C8A5C)),
+    ThemeVariant.amberCrt: TerminalColors(
+      background: Color(0xFF1A1206), surface: Color(0xFF241A0A), border: Color(0xFF3D2E12),
+      accent: Color(0xFFFFB000), cyan: Color(0xFFFFD27F), amber: Color(0xFFFFCC66),
+      text: Color(0xFFFFDFA6), textDim: Color(0xFFB58A4C)),
+  };
+
+  static ThemeData forVariant(ThemeVariant v) {
+    final p = _palettes[v]!;
+    final base = ThemeData.dark();
+    final mono = GoogleFonts.jetBrainsMonoTextTheme(base.textTheme);
+    return base.copyWith(
+      scaffoldBackgroundColor: p.background,
+      extensions: [p],
+      textTheme: mono.apply(bodyColor: p.text, displayColor: p.text, fontFamilyFallback: _fontFallback),
+      colorScheme: base.colorScheme.copyWith(
+        primary: p.accent, secondary: p.cyan, surface: p.surface),
     );
   }
 }

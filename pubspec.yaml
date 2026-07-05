@@ -40,6 +40,8 @@ dependencies:
   visibility_detector: ^0.4.0+2
   font_awesome_flutter: ^11.0.0
   url_launcher: ^6.3.2
+  shared_preferences: ^2.3.5
+  enough_ascii_art: ^1.1.2
 
 dev_dependencies:
   flutter_test:
@@ -67,6 +69,11 @@ flutter:
   assets:
     - assets/projects/
   #   - images/a_dot_ham.jpeg
+
+  fonts:
+    - family: NanumGothicCoding
+      fonts:
+        - asset: assets/fonts/NanumGothicCoding-Regular.ttf
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
