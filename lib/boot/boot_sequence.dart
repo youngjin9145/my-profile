@@ -105,7 +105,9 @@ class _BootSequenceState extends State<BootSequence>
 
             return Opacity(
               opacity: overlay,
-              child: ColoredBox(
+              // Material provides a proper DefaultTextStyle — without it, text
+              // here (no Scaffold ancestor) gets Flutter's yellow debug underline.
+              child: Material(
                 color: Colors.black,
                 child: Stack(
                   fit: StackFit.expand,
