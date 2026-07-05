@@ -4,6 +4,7 @@ import 'theme/app_theme.dart';
 import 'state/app_settings.dart';
 import 'state/app_scope.dart';
 import 'state/settings_store.dart';
+import 'boot/boot_gate.dart';
 import 'widgets/custom_cursor.dart';
 import 'widgets/scroll_hint.dart';
 import 'widgets/settings_bar.dart';
@@ -41,7 +42,7 @@ class ShadowPortfolioApp extends StatelessWidget {
           title: ProfileData.handle,
           debugShowCheckedModeBanner: false,
           theme: AppTheme.forVariant(settings.theme), // 선택된 테마 반영
-          home: const CustomCursor(child: HomePage()),
+          home: BootGate(child: const CustomCursor(child: HomePage())),
         ),
       ),
     );
