@@ -52,6 +52,20 @@ class TerminalColors extends ThemeExtension<TerminalColors> {
   }
 }
 
+/// githubDark 팔레트 — 테마 확장이 없을 때(예: 위젯 테스트의 맨 MaterialApp)
+/// 쓰이는 기본값. AppColors 원본 값과 동일하게 유지.
+const _fallback = TerminalColors(
+  background: Color(0xFF0D1117),
+  surface: Color(0xFF161B22),
+  border: Color(0xFF30363D),
+  accent: Color(0xFF3FB950),
+  cyan: Color(0xFF39D0D8),
+  amber: Color(0xFFE3B341),
+  text: Color(0xFFC9D1D9),
+  textDim: Color(0xFF8B949E),
+);
+
 extension TermX on BuildContext {
-  TerminalColors get term => Theme.of(this).extension<TerminalColors>()!;
+  TerminalColors get term =>
+      Theme.of(this).extension<TerminalColors>() ?? _fallback;
 }

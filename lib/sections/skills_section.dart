@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../data/profile_data.dart';
 import '../state/app_scope.dart';
-import '../theme/app_theme.dart';
+import '../theme/terminal_colors.dart';
 import '../widgets/magnetic.dart';
 import '../widgets/terminal_window.dart';
 
@@ -12,6 +12,7 @@ class SkillsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final lang = AppScope.of(context).lang;
+    final term = context.term;
 
     return TerminalWindow(
       title: 'skills',
@@ -21,7 +22,7 @@ class SkillsSection extends StatelessWidget {
         children: [
           Text(
             '\$ ls skills/',
-            style: textTheme.bodyMedium?.copyWith(color: AppColors.textDim),
+            style: textTheme.bodyMedium?.copyWith(color: term.textDim),
           ),
           const SizedBox(height: 14),
           Wrap(
@@ -36,7 +37,7 @@ class SkillsSection extends StatelessWidget {
           const SizedBox(height: 26),
           Text(
             '\$ cat awards.txt',
-            style: textTheme.bodyMedium?.copyWith(color: AppColors.textDim),
+            style: textTheme.bodyMedium?.copyWith(color: term.textDim),
           ),
           const SizedBox(height: 12),
           for (final award in ProfileData.awards)
@@ -48,14 +49,14 @@ class SkillsSection extends StatelessWidget {
                   Text(
                     '* ',
                     style: textTheme.bodyLarge?.copyWith(
-                      color: AppColors.amber,
+                      color: term.amber,
                     ),
                   ),
                   Expanded(
                     child: Text(
                       award.of(lang),
                       style: textTheme.bodyLarge?.copyWith(
-                        color: AppColors.text,
+                        color: term.text,
                       ),
                     ),
                   ),
@@ -76,17 +77,18 @@ class _SkillsBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final term = context.term;
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
       decoration: BoxDecoration(
-        color: AppColors.background,
+        color: term.background,
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: AppColors.border),
+        border: Border.all(color: term.border),
       ),
       child: Text(
         label,
-        style: textTheme.bodyMedium?.copyWith(color: AppColors.green),
+        style: textTheme.bodyMedium?.copyWith(color: term.accent),
       ),
     );
   }

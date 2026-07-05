@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../theme/app_theme.dart';
+import '../theme/terminal_colors.dart';
 
 class TerminalWindow extends StatelessWidget {
   const TerminalWindow({super.key, required this.title, required this.child});
@@ -10,17 +10,18 @@ class TerminalWindow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final term = context.term;
     final radius = BorderRadius.circular(10);
 
     return Container(
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
         borderRadius: radius,
-        color: AppColors.surface,
+        color: term.surface,
       ),
       foregroundDecoration: BoxDecoration(
         borderRadius: radius,
-        border: Border.all(color: AppColors.border),
+        border: Border.all(color: term.border),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -28,7 +29,7 @@ class TerminalWindow extends StatelessWidget {
         children: [
           // 상단 타이틀 바
           Container(
-            color: AppColors.background,
+            color: term.background,
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
             child: Row(
               children: [
@@ -47,7 +48,7 @@ class TerminalWindow extends StatelessWidget {
                     title,
                     textAlign: TextAlign.center,
                     style: textTheme.bodySmall?.copyWith(
-                      color: AppColors.textDim,
+                      color: term.textDim,
                     ),
                   ),
                 ),

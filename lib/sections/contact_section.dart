@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../data/profile_data.dart';
 import '../state/app_scope.dart';
-import '../theme/app_theme.dart';
+import '../theme/terminal_colors.dart';
 import '../widgets/magnetic.dart';
 import '../widgets/terminal_window.dart';
 
@@ -14,6 +14,7 @@ class ContactSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final lang = AppScope.of(context).lang;
+    final term = context.term;
 
     return TerminalWindow(
       title: 'contact',
@@ -23,12 +24,12 @@ class ContactSection extends StatelessWidget {
         children: [
           Text(
             '\$ ./contact.sh',
-            style: textTheme.bodyMedium?.copyWith(color: AppColors.textDim),
+            style: textTheme.bodyMedium?.copyWith(color: term.textDim),
           ),
           const SizedBox(height: 16),
           Text(
             ProfileData.contactTagline.of(lang),
-            style: textTheme.titleMedium?.copyWith(color: AppColors.text),
+            style: textTheme.titleMedium?.copyWith(color: term.text),
           ),
           const SizedBox(height: 20),
           Wrap(
@@ -91,7 +92,8 @@ class _SocialButtonState extends State<_SocialButton> {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    final color = _hover ? AppColors.green : AppColors.text;
+    final term = context.term;
+    final color = _hover ? term.accent : term.text;
 
     return Magnetic(
       child: GestureDetector(
@@ -103,10 +105,10 @@ class _SocialButtonState extends State<_SocialButton> {
             duration: const Duration(milliseconds: 150),
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             decoration: BoxDecoration(
-              color: AppColors.surface,
+              color: term.surface,
               borderRadius: BorderRadius.circular(8),
               border: Border.all(
-                color: _hover ? AppColors.green : AppColors.border,
+                color: _hover ? term.accent : term.border,
               ),
             ),
             child: Row(

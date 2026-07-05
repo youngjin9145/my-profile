@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/lang.dart';
 import '../state/app_scope.dart';
-import '../theme/app_theme.dart';
+import '../theme/terminal_colors.dart';
 
 /// 우상단 고정 설정 바 — 현재는 EN|KO 언어 토글만. (테마 버튼은 Phase 2)
 class SettingsBar extends StatelessWidget {
@@ -10,7 +10,7 @@ class SettingsBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final settings = AppScope.of(context);
-    final onColor = AppColors.textDim; // Phase 2에서 context.term.textDim 으로 교체
+    final onColor = context.term.textDim;
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -39,9 +39,9 @@ class _Pill extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
           decoration: BoxDecoration(
-            color: AppColors.surface,
+            color: context.term.surface,
             borderRadius: BorderRadius.circular(8),
-            border: Border.all(color: AppColors.border),
+            border: Border.all(color: context.term.border),
           ),
           child: Text(label, style: TextStyle(color: color, fontSize: 13)),
         ),
