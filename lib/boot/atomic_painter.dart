@@ -4,10 +4,15 @@ import 'package:flutter/material.dart';
 /// Paints an expanding purple ASCII shock-blast radiating from the centre.
 /// [progress] 0→1 grows the blast radius; glyphs densify toward the core.
 /// Original, procedural, abstract effect — not a reproduction of any frame.
+///
+/// [fontFamily] must be a REGISTERED monospace family (e.g. the app's
+/// JetBrains Mono). CanvasKit does not resolve the generic 'monospace'
+/// keyword, so passing it would break glyph shaping/alignment.
 class AtomicPainter extends CustomPainter {
-  AtomicPainter(this.progress);
+  AtomicPainter(this.progress, this.fontFamily);
 
   final double progress;
+  final String? fontFamily;
 
   static const double _cell = 18.0; // px per character cell (bounds glyph count)
   static const List<String> _glyphs = ['·', ':', '+', '*', '#', '▓', '█'];
@@ -19,11 +24,14 @@ class AtomicPainter extends CustomPainter {
     Color(0xFFE0AAFF),
   ];
 
-  // Lazily-built cache of laid-out painters, one per (glyph, colour) pair, so
-  // paint() never re-lays-out text per cell (keeps the animation cheap).
+  // Cache of laid-out painters, one per (glyph, colour) pair, rebuilt only when
+  // the font family changes, so paint() never re-lays-out text per cell.
   static List<List<TextPainter>>? _cache;
-  static List<List<TextPainter>> _painters() {
-    return _cache ??= [
+  static String? _cacheFamily;
+  static List<List<TextPainter>> _painters(String? family) {
+    if (_cache != null && _cacheFamily == family) return _cache!;
+    _cacheFamily = family;
+    return _cache = [
       for (final g in _glyphs)
         [
           for (final c in _purples)
@@ -31,7 +39,7 @@ class AtomicPainter extends CustomPainter {
               text: TextSpan(
                 text: g,
                 style: TextStyle(
-                  fontFamily: 'monospace',
+                  fontFamily: family,
                   fontSize: _cell,
                   height: 1.0,
                   color: c,
@@ -46,7 +54,7 @@ class AtomicPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     if (progress <= 0) return;
-    final painters = _painters();
+    final painters = _painters(fontFamily);
     final cols = (size.width / _cell).ceil();
     final rows = (size.height / _cell).ceil();
     final cx = cols / 2.0;
@@ -83,5 +91,5 @@ class AtomicPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(AtomicPainter oldDelegate) =>
-      oldDelegate.progress != progress;
+      oldDelegate.progress != progress || oldDelegate.fontFamily != fontFamily;
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'ascii_banner.dart';
 import 'atomic_painter.dart';
 
@@ -71,6 +72,11 @@ class _BootSequenceState extends State<BootSequence>
 
   @override
   Widget build(BuildContext context) {
+    // CanvasKit does not resolve the generic 'monospace' keyword, so use the
+    // real registered JetBrains Mono family (same font as the site, and it
+    // carries the block/box-drawing glyphs the ASCII art needs).
+    final mono = GoogleFonts.jetBrainsMono().fontFamily;
+
     return Focus(
       autofocus: true,
       onKeyEvent: (_, _) {
@@ -104,7 +110,8 @@ class _BootSequenceState extends State<BootSequence>
                 child: Stack(
                   fit: StackFit.expand,
                   children: [
-                    if (atomic > 0) CustomPaint(painter: AtomicPainter(atomic)),
+                    if (atomic > 0)
+                      CustomPaint(painter: AtomicPainter(atomic, mono)),
                     if (logOpacity > 0.01)
                       Padding(
                         padding: const EdgeInsets.all(28),
@@ -122,11 +129,11 @@ class _BootSequenceState extends State<BootSequence>
                                   Text(
                                     _bootLog[i] +
                                         (i == logLines - 1 && blink ? ' _' : ''),
-                                    style: const TextStyle(
-                                      fontFamily: 'monospace',
+                                    style: TextStyle(
+                                      fontFamily: mono,
                                       fontSize: 14,
                                       height: 1.6,
-                                      color: Color(0xFF39D0D8),
+                                      color: const Color(0xFF39D0D8),
                                     ),
                                   ),
                               ],
@@ -140,7 +147,7 @@ class _BootSequenceState extends State<BootSequence>
                           offset: Offset(0, bladeLift),
                           child: Opacity(
                             opacity: bladeOpacity,
-                            child: _asciiBlock(_blade, _accent, 18),
+                            child: _asciiBlock(_blade, _accent, 18, mono),
                           ),
                         ),
                       ),
@@ -159,10 +166,10 @@ class _BootSequenceState extends State<BootSequence>
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
                                     _asciiBlock(
-                                        asciiBanner('I AM'), Colors.white, 22),
+                                        asciiBanner('I AM'), Colors.white, 22, mono),
                                     const SizedBox(height: 10),
                                     _asciiBlock(
-                                        asciiBanner('ATOMIC'), _accent, 22),
+                                        asciiBanner('ATOMIC'), _accent, 22, mono),
                                   ],
                                 ),
                               ),
@@ -183,13 +190,13 @@ class _BootSequenceState extends State<BootSequence>
                       child: IgnorePointer(
                         child: Opacity(
                           opacity: 0.5 * (1 - _seg(t, 0.8, 1.0)),
-                          child: const Text(
-                            '▸ click / press any key to skip',
+                          child: Text(
+                            '> click / press any key to skip',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              fontFamily: 'monospace',
+                              fontFamily: mono,
                               fontSize: 12,
-                              color: Color(0xFF8B949E),
+                              color: const Color(0xFF8B949E),
                             ),
                           ),
                         ),
@@ -205,7 +212,8 @@ class _BootSequenceState extends State<BootSequence>
     );
   }
 
-  Widget _asciiBlock(List<String> lines, Color color, double size) {
+  Widget _asciiBlock(
+      List<String> lines, Color color, double size, String? family) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -213,7 +221,7 @@ class _BootSequenceState extends State<BootSequence>
           Text(
             l,
             style: TextStyle(
-              fontFamily: 'monospace',
+              fontFamily: family,
               fontSize: size,
               height: 1.0,
               color: color,
